@@ -29,7 +29,7 @@ public class SinglyLinkedList {
             System.out.println(current.data);
             current = current.next;
         }
-        System.out.println("Null");
+        System.out.println("Ended");
     }
 
     // Finding length of list
@@ -115,11 +115,43 @@ public class SinglyLinkedList {
         return current;
     }
 
+    ListNode delete(int position) {
+        if (position == 1) {
+            ListNode temp = head;
+            head = head.next;
+            return temp;
+        }
+
+        ListNode previous = head;
+        int count = 1;
+
+        while (count < position-1) {
+            previous = previous.next ;
+            count++;
+        }
+        ListNode current = previous.next;
+        previous.next = current.next;
+        return current;
+    }
+
     public static void main(String[] args) {
         SinglyLinkedList sll = new SinglyLinkedList();
-        sll.insertAtStart(45);
-        System.out.println(sll.head);
-        System.out.println(sll.deleteLast());
-        System.out.println(sll.head);
+
+        // inserting nodes
+        sll.insertAtEnd(41);
+        sll.insertAtEnd(42);
+        sll.insertAtEnd(43);
+        sll.insertAtEnd(44);
+        sll.insertAtEnd(45);
+
+        // displaying nodes
+        sll.printLinkedList();
+
+        // deleting nodes
+        sll.delete(4);
+
+        // displaying nodes
+        sll.printLinkedList();
+
     }
 }
