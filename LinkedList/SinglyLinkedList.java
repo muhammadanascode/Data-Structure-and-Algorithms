@@ -64,12 +64,10 @@ public class SinglyLinkedList {
     void insertAtPosition(int value, int position) {
         ListNode newNode = new ListNode(value);
         if (position == 1) {
-            newNode.next = head;
-            head = newNode;
-            return;
+           insertAtStart(value);
         }
         ListNode previousNode = head;
-        int count = 0;
+        int count = 1;
         while (count < position - 1) {
             previousNode = previousNode.next;
             count++;
