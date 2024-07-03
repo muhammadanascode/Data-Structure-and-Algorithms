@@ -136,7 +136,7 @@ public class SinglyLinkedList {
         return current;
     }
 
-    //searching specific node with data
+    //searching specific node
     boolean searchNode(int value){
       ListNode current = head ;
       while (current != null) {
