@@ -14,7 +14,7 @@ public class SinglyLinkedList {
         }
     }
 
-    //printing the list
+    // printing the list
     void printLinkedList() {
         ListNode current = head;
         while (current != null) {
@@ -24,7 +24,7 @@ public class SinglyLinkedList {
         System.out.println("Null");
     }
 
-    //Finding length of list
+    // Finding length of list
     int length() {
         if (head == null) {
             return 0;
@@ -38,14 +38,14 @@ public class SinglyLinkedList {
         return count;
     }
 
-    //Inserting Node at start
+    // Inserting Node at start
     void insertAtStart(int value) {
         ListNode newNode = new ListNode(value);
         newNode.next = head;
         head = newNode;
     }
 
-    //Inserting node at the end
+    // Inserting node at the end
     void insertAtEnd(int value) {
         ListNode newNode = new ListNode(value);
         if (head == null) {
@@ -59,12 +59,11 @@ public class SinglyLinkedList {
         current.next = newNode;
     }
 
-
-    //Inserting Node at specific position
+    // Inserting Node at specific position
     void insertAtPosition(int value, int position) {
         ListNode newNode = new ListNode(value);
         if (position == 1) {
-           insertAtStart(value);
+            insertAtStart(value);
         }
         ListNode previousNode = head;
         int count = 1;
@@ -77,6 +76,17 @@ public class SinglyLinkedList {
         previousNode.next = newNode;
     }
 
+    //Deleting first Node from List
+    ListNode deleteFirst() {
+        if (head == null) {
+            return null;
+        }
+        ListNode temp = head;
+        head = head.next;
+        temp.next = null;
+        return temp;
+    }
+
     public static void main(String[] args) {
         SinglyLinkedList sll = new SinglyLinkedList();
         sll.insertAtStart(12);
@@ -85,8 +95,11 @@ public class SinglyLinkedList {
         sll.insertAtStart(14);
         sll.insertAtStart(90);
         sll.insertAtEnd(56);
-        sll.insertAtPosition(5,3);
+        sll.insertAtPosition(5, 3);
         sll.insertAtPosition(6, 4);
+        sll.deleteFirst();
+        sll.deleteFirst();
+        sll.deleteFirst();
 
         sll.printLinkedList();
         System.out.println(sll.length());
