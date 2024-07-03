@@ -12,6 +12,14 @@ public class SinglyLinkedList {
             this.data = data;
             this.next = null;
         }
+
+        @Override
+        public String toString() {
+            return "ListNode{" +
+                    "data=" + data +
+                    ", next=" + (next != null ? next.data : "null") +
+                    '}';
+        }
     }
 
     // printing the list
@@ -76,7 +84,7 @@ public class SinglyLinkedList {
         previousNode.next = newNode;
     }
 
-    //Deleting first Node from List
+    // Deleting first Node from List
     ListNode deleteFirst() {
         if (head == null) {
             return null;
@@ -87,21 +95,31 @@ public class SinglyLinkedList {
         return temp;
     }
 
+    ListNode deleteLast() {
+        if (head == null) {
+            return null;
+        } else if (head.next == null) {
+            ListNode temp = head;
+            head = null;
+            return temp;
+        }
+        ListNode previous = null;
+        ListNode current = head;
+
+        while (current.next != null) {
+            previous = current;
+            current = current.next;
+        }
+
+        previous.next = null;
+        return current;
+    }
+
     public static void main(String[] args) {
         SinglyLinkedList sll = new SinglyLinkedList();
-        sll.insertAtStart(12);
-        sll.insertAtStart(13);
-        sll.insertAtStart(78);
-        sll.insertAtStart(14);
-        sll.insertAtStart(90);
-        sll.insertAtEnd(56);
-        sll.insertAtPosition(5, 3);
-        sll.insertAtPosition(6, 4);
-        sll.deleteFirst();
-        sll.deleteFirst();
-        sll.deleteFirst();
-
-        sll.printLinkedList();
-        System.out.println(sll.length());
+        sll.insertAtStart(45);
+        System.out.println(sll.head);
+        System.out.println(sll.deleteLast());
+        System.out.println(sll.head);
     }
 }
