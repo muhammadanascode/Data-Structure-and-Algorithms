@@ -14,6 +14,7 @@ public class SinglyLinkedList {
         }
     }
 
+    //printing the list
     void printLinkedList() {
         ListNode current = head;
         while (current != null) {
@@ -23,6 +24,7 @@ public class SinglyLinkedList {
         System.out.println("Null");
     }
 
+    //Finding length of list
     int length() {
         if (head == null) {
             return 0;
@@ -36,12 +38,14 @@ public class SinglyLinkedList {
         return count;
     }
 
+    //Inserting Node at start
     void insertAtStart(int value) {
         ListNode newNode = new ListNode(value);
         newNode.next = head;
         head = newNode;
     }
 
+    //Inserting node at the end
     void insertAtEnd(int value) {
         ListNode newNode = new ListNode(value);
         if (head == null) {
@@ -53,6 +57,26 @@ public class SinglyLinkedList {
             current = current.next;
         }
         current.next = newNode;
+    }
+
+
+    //Inserting Node at specific position
+    void insertAtPosition(int value, int position) {
+        ListNode newNode = new ListNode(value);
+        if (position == 1) {
+            newNode.next = head;
+            head = newNode;
+            return;
+        }
+        ListNode previousNode = head;
+        int count = 0;
+        while (count < position - 1) {
+            previousNode = previousNode.next;
+            count++;
+        }
+        ListNode current = previousNode.next;
+        newNode.next = current;
+        previousNode.next = newNode;
     }
 
     public static void main(String[] args) {
