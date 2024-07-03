@@ -85,6 +85,8 @@ public class SinglyLinkedList {
         sll.insertAtStart(14);
         sll.insertAtStart(90);
         sll.insertAtEnd(56);
+        sll.insertAtPosition(5,3);
+        sll.insertAtPosition(6, 4);
 
         sll.printLinkedList();
         System.out.println(sll.length());
