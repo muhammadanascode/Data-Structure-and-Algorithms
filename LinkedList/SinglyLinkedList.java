@@ -14,7 +14,7 @@ public class SinglyLinkedList {
         }
     }
 
-     void printLinkedList() {
+    void printLinkedList() {
         ListNode current = head;
         while (current != null) {
             System.out.println(current.data);
@@ -23,14 +23,34 @@ public class SinglyLinkedList {
         System.out.println("Null");
     }
 
+    int length() {
+        if (head == null) {
+            return 0;
+        }
+        int count = 0;
+        ListNode current = head;
+        while (current != null) {
+            current = current.next;
+            count++;
+        }
+        return count;
+    }
+
+    void insertAtStart(int value) {
+        ListNode newNode = new ListNode(value);
+        newNode.next = head;
+        head = newNode;
+    }
+
     public static void main(String[] args) {
         SinglyLinkedList sll = new SinglyLinkedList();
-        sll.head = new ListNode(5);
-        ListNode second = new ListNode(3);
-        ListNode third = new ListNode(8);
-        sll.head.next = second;
-        second.next = third;
+        sll.insertAtStart(12);
+        sll.insertAtStart(13);
+        sll.insertAtStart(78);
+        sll.insertAtStart(14);
+        sll.insertAtStart(90);
 
         sll.printLinkedList();
+        System.out.println(sll.length());
     }
 }
