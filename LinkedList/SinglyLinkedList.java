@@ -134,6 +134,17 @@ public class SinglyLinkedList {
         return current;
     }
 
+    boolean searchNode(int value){
+      ListNode current = head ;
+      while (current != null) {
+        if (current.data == value) {
+            return true ;
+        }
+        current = current.next ;
+      }
+      return false ;
+    }
+
     public static void main(String[] args) {
         SinglyLinkedList sll = new SinglyLinkedList();
 
@@ -152,6 +163,8 @@ public class SinglyLinkedList {
 
         // displaying nodes
         sll.printLinkedList();
+
+        System.out.println(sll.searchNode(90));
 
     }
 }
