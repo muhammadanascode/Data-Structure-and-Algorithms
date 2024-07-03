@@ -95,6 +95,7 @@ public class SinglyLinkedList {
         return temp;
     }
 
+    //deleting last node
     ListNode deleteLast() {
         if (head == null) {
             return null;
@@ -115,6 +116,7 @@ public class SinglyLinkedList {
         return current;
     }
 
+    //deleting nodes from specific position
     ListNode delete(int position) {
         if (position == 1) {
             ListNode temp = head;
@@ -134,6 +136,7 @@ public class SinglyLinkedList {
         return current;
     }
 
+    //searching specific node with data
     boolean searchNode(int value){
       ListNode current = head ;
       while (current != null) {
