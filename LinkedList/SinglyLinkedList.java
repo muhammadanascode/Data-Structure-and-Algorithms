@@ -195,12 +195,29 @@ public class SinglyLinkedList {
         return mainPtr ;
     }
 
+    //Removing duplicates item from sorted linkedlist
+    void removeDuplicates(){
+        if (head == null) {
+            return  ;
+        }
+        ListNode current = head ;
+        while (current != null && current.next != null) {
+            if (current.data == current.next.data) {
+                current.next = current.next.next ;
+            }
+            else{
+                current = current.next ;
+            }
+        }
+         
+    }
+
     public static void main(String[] args) {
         SinglyLinkedList sll = new SinglyLinkedList();
 
         // inserting nodes
         sll.insertAtEnd(41);
-        sll.insertAtEnd(42);
+        sll.insertAtEnd(41);
         sll.insertAtEnd(43);
         sll.insertAtEnd(44);
         sll.insertAtEnd(45);
@@ -216,8 +233,9 @@ public class SinglyLinkedList {
 
         // System.out.println(sll.searchNode(90));
         // sll.reverse();
+        sll.removeDuplicates();
         sll.printLinkedList();
-        System.out.println(sll.getNthListNodeFromEnd(3));
+        // System.out.println(sll.getNthListNodeFromEnd(3));
 
     }
 }
