@@ -215,6 +215,9 @@ public class SinglyLinkedList {
     //method to insert a neew node in sorted linkedlist
     void insertNewNodeInSorted(int data){
         ListNode newNode = new ListNode(data) ;
+        if (head == null) {
+            head = newNode ;
+        }
         ListNode previous = null ;
         ListNode current = head ;
 
