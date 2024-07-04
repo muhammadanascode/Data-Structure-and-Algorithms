@@ -212,6 +212,21 @@ public class SinglyLinkedList {
          
     }
 
+    //method to insert a neew node in sorted linkedlist
+    void insertNewNodeInSorted(int data){
+        ListNode newNode = new ListNode(data) ;
+        ListNode previous = null ;
+        ListNode current = head ;
+
+        while (current != null && current.data<newNode.data) {
+            previous = current ;
+            current = current.next ;
+        }
+        previous.next = newNode ;
+        newNode.next = current ;
+        return ;
+    }
+
     public static void main(String[] args) {
         SinglyLinkedList sll = new SinglyLinkedList();
 
@@ -220,7 +235,7 @@ public class SinglyLinkedList {
         sll.insertAtEnd(41);
         sll.insertAtEnd(43);
         sll.insertAtEnd(44);
-        sll.insertAtEnd(45);
+        sll.insertAtEnd(46);
 
         // displaying nodes
         // sll.printLinkedList();
@@ -233,7 +248,8 @@ public class SinglyLinkedList {
 
         // System.out.println(sll.searchNode(90));
         // sll.reverse();
-        sll.removeDuplicates();
+        // sll.removeDuplicates();
+        sll.insertNewNodeInSorted(45);
         sll.printLinkedList();
         // System.out.println(sll.getNthListNodeFromEnd(3));
 
