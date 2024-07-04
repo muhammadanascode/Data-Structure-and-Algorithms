@@ -95,7 +95,7 @@ public class SinglyLinkedList {
         return temp;
     }
 
-    //deleting last node
+    // deleting last node
     ListNode deleteLast() {
         if (head == null) {
             return null;
@@ -116,7 +116,7 @@ public class SinglyLinkedList {
         return current;
     }
 
-    //deleting nodes from specific position
+    // deleting nodes from specific position
     ListNode delete(int position) {
         if (position == 1) {
             ListNode temp = head;
@@ -127,8 +127,8 @@ public class SinglyLinkedList {
         ListNode previous = head;
         int count = 1;
 
-        while (count < position-1) {
-            previous = previous.next ;
+        while (count < position - 1) {
+            previous = previous.next;
             count++;
         }
         ListNode current = previous.next;
@@ -136,35 +136,40 @@ public class SinglyLinkedList {
         return current;
     }
 
-    //searching specific node
-    boolean searchNode(int value){
-      ListNode current = head ;
-      while (current != null) {
-        if (current.data == value) {
-            return true ;
+    // searching specific node
+    boolean searchNode(int value) {
+        ListNode current = head;
+        while (current != null) {
+            if (current.data == value) {
+                return true;
+            }
+            current = current.next;
         }
-        current = current.next ;
-      }
-      return false ;
+        return false;
     }
-    
 
-    //Reversing a linkedlist
-    ListNode reverse(){
+    // Reversing a linkedlist
+    void reverse() {
 
-        ListNode current = head ;
-        ListNode previous  = null ;
-        ListNode next = null ;
+        if (head == null) {
+            return  ;
+        }
 
+        ListNode current = head;
+        ListNode previous = null;
+        ListNode next = null;
 
         while (current != null) {
-            next = current.next ;
-            current.next = previous ;
-            previous = current ;
-            current = next ;
+            next = current.next;
+            current.next = previous;
+            previous = current;
+            current = next;
         }
 
-        return previous ;
+        //referencing head previous
+        head = previous ;
+
+        return;
     }
 
     public static void main(String[] args) {
@@ -178,15 +183,17 @@ public class SinglyLinkedList {
         sll.insertAtEnd(45);
 
         // displaying nodes
-        sll.printLinkedList();
+        // sll.printLinkedList();
 
         // deleting nodes
-        sll.delete(4);
+        // sll.delete(4);
 
         // displaying nodes
-        sll.printLinkedList();
+        // sll.printLinkedList();
 
-        System.out.println(sll.searchNode(90));
+        // System.out.println(sll.searchNode(90));
+        sll.reverse();
+        sll.printLinkedList();
 
     }
 }
