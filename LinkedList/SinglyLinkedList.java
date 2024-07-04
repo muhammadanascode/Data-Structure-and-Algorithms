@@ -152,7 +152,7 @@ public class SinglyLinkedList {
     void reverse() {
 
         if (head == null) {
-            return  ;
+            return;
         }
 
         ListNode current = head;
@@ -166,68 +166,86 @@ public class SinglyLinkedList {
             current = next;
         }
 
-        //referencing head previous
-        head = previous ;
+        // referencing head previous
+        head = previous;
 
         return;
     }
 
-    //finding nth node from the end of list
-    ListNode getNthListNodeFromEnd(int n){
+    // finding nth node from the end of list
+    ListNode getNthListNodeFromEnd(int n) {
         if (head == null) {
-            return null ;
+            return null;
         }
 
-        ListNode mainPtr = head ;
-        ListNode refPtr = head ;
-        int count = 0 ;
+        ListNode mainPtr = head;
+        ListNode refPtr = head;
+        int count = 0;
 
-        while (count<n) {
-            refPtr = refPtr.next ;
-            count++ ;
+        while (count < n) {
+            refPtr = refPtr.next;
+            count++;
         }
 
         while (refPtr != null) {
-            refPtr = refPtr.next ;
-            mainPtr = mainPtr.next ;
+            refPtr = refPtr.next;
+            mainPtr = mainPtr.next;
         }
 
-        return mainPtr ;
+        return mainPtr;
     }
 
-    //Removing duplicates item from sorted linkedlist
-    void removeDuplicates(){
+    // Removing duplicates item from sorted linkedlist
+    void removeDuplicates() {
         if (head == null) {
-            return  ;
+            return;
         }
-        ListNode current = head ;
+        ListNode current = head;
         while (current != null && current.next != null) {
             if (current.data == current.next.data) {
-                current.next = current.next.next ;
-            }
-            else{
-                current = current.next ;
+                current.next = current.next.next;
+            } else {
+                current = current.next;
             }
         }
-         
+
     }
 
-    //method to insert a neew node in sorted linkedlist
-    void insertNewNodeInSorted(int data){
-        ListNode newNode = new ListNode(data) ;
+    // method to insert a neew node in sorted linkedlist
+    void insertNewNodeInSorted(int data) {
+        ListNode newNode = new ListNode(data);
         if (head == null) {
-            head = newNode ;
+            head = newNode;
         }
-        ListNode previous = null ;
-        ListNode current = head ;
+        ListNode previous = null;
+        ListNode current = head;
 
-        while (current != null && current.data<newNode.data) {
-            previous = current ;
-            current = current.next ;
+        while (current != null && current.data < newNode.data) {
+            previous = current;
+            current = current.next;
         }
-        previous.next = newNode ;
-        newNode.next = current ;
-        return ;
+        previous.next = newNode;
+        newNode.next = current;
+        return;
+    }
+
+    // deleting a node with key
+    boolean deleteKey(int value) {
+        if (head == null) {
+            return false;
+        }
+        ListNode current = head;
+        ListNode previous = null;
+
+        while (current != null && current.data != value) {
+            previous = current;
+            current = current.next;
+        }
+        if (current == null) {
+            return false;
+        }
+        previous.next = current.next;
+        return true;
     }
 
     public static void main(String[] args) {
@@ -252,7 +270,8 @@ public class SinglyLinkedList {
         // System.out.println(sll.searchNode(90));
         // sll.reverse();
         // sll.removeDuplicates();
-        sll.insertNewNodeInSorted(45);
+        // sll.insertNewNodeInSorted(45);
+       System.out.println(sll.deleteKey(46)); 
         sll.printLinkedList();
         // System.out.println(sll.getNthListNodeFromEnd(3));
 
