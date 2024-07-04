@@ -147,6 +147,25 @@ public class SinglyLinkedList {
       }
       return false ;
     }
+    
+
+    //Reversing a linkedlist
+    ListNode reverse(){
+
+        ListNode current = head ;
+        ListNode previous  = null ;
+        ListNode next = null ;
+
+
+        while (current != null) {
+            next = current.next ;
+            current.next = previous ;
+            previous = current ;
+            current = next ;
+        }
+
+        return previous ;
+    }
 
     public static void main(String[] args) {
         SinglyLinkedList sll = new SinglyLinkedList();
