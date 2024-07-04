@@ -172,6 +172,29 @@ public class SinglyLinkedList {
         return;
     }
 
+    //finding nth node from the end of list
+    ListNode getNthListNodeFromEnd(int n){
+        if (head == null) {
+            return null ;
+        }
+
+        ListNode mainPtr = head ;
+        ListNode refPtr = head ;
+        int count = 0 ;
+
+        while (count<n) {
+            refPtr = refPtr.next ;
+            count++ ;
+        }
+
+        while (refPtr != null) {
+            refPtr = refPtr.next ;
+            mainPtr = mainPtr.next ;
+        }
+
+        return mainPtr ;
+    }
+
     public static void main(String[] args) {
         SinglyLinkedList sll = new SinglyLinkedList();
 
@@ -192,8 +215,9 @@ public class SinglyLinkedList {
         // sll.printLinkedList();
 
         // System.out.println(sll.searchNode(90));
-        sll.reverse();
+        // sll.reverse();
         sll.printLinkedList();
+        System.out.println(sll.getNthListNodeFromEnd(3));
 
     }
 }
