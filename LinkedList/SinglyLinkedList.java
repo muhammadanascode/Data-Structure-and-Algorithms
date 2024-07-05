@@ -237,6 +237,11 @@ public class SinglyLinkedList {
         ListNode current = head;
         ListNode previous = null;
 
+        if (current != null && current.data == value) {
+            head = head.next ;
+            return true ;
+        }
+
         while (current != null && current.data != value) {
             previous = current;
             current = current.next;
