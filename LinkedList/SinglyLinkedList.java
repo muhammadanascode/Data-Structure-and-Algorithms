@@ -1,7 +1,5 @@
 package LinkedList;
 
-import java.util.List;
-
 public class SinglyLinkedList {
 
     private ListNode head;
@@ -331,24 +329,50 @@ public class SinglyLinkedList {
         return temp.next;
     }
 
+    // Adding two lists
+    static ListNode add(ListNode a, ListNode b) {
+        ListNode temp = new ListNode(0);
+        ListNode tail = temp;
+        int carry = 0;
+
+        while (a != null || b != null) {
+            int x = (a != null) ? a.data : 0;
+            int y = (b != null) ? b.data : 0;
+
+            int sum = x + y + carry;
+            carry = sum / 10;
+
+            tail.next = new ListNode(sum % 10);
+            tail = tail.next;
+
+            if (a != null) {
+                a = a.next;
+            }
+            if (b != null) {
+                b = b.next;
+            }
+
+        }
+        if (carry > 0) {
+            tail.next = new ListNode(carry);
+        }
+        return temp.next;
+    }
+
     public static void main(String[] args) {
         SinglyLinkedList sll = new SinglyLinkedList();
         SinglyLinkedList sll2 = new SinglyLinkedList();
 
         // inserting nodes
-        sll.insertAtEnd(41);
-        sll.insertAtEnd(42);
-        sll.insertAtEnd(43);
-        sll.insertAtEnd(44);
-        sll.insertAtEnd(45);
+        sll.insertAtEnd(1);
+        sll.insertAtEnd(5);
+        sll.insertAtEnd(5);
 
-        sll.insertAtEnd(46);
-        sll.insertAtEnd(47);
-        sll.insertAtEnd(48);
-        sll.insertAtEnd(49);
-        sll.insertAtEnd(50);
+        sll2.insertAtEnd(1);
+        sll2.insertAtEnd(5);
+        sll2.insertAtEnd(5);
 
-        sll.getNthListNodeFromEnd(1).next = sll.getNthListNodeFromEnd(3);
+        // sll.getNthListNodeFromEnd(1).next = sll.getNthListNodeFromEnd(3);
 
         // displaying nodes
         // sll.printLinkedList();
@@ -367,7 +391,8 @@ public class SinglyLinkedList {
         // System.out.println(sll.containsLoop());
         // System.out.println(sll.getFirstNodeOfLoop());
 
-        System.out.println(mergeTwoSortedList(sll.head, sll2.head));
+        // System.out.println(mergeTwoSortedList(sll.head, sll2.head));
+        System.out.println(add(sll.head, sll2.head).next.next);
 
         // sll.printLinkedList();
         // System.out.println(sll.getNthListNodeFromEnd(3));
