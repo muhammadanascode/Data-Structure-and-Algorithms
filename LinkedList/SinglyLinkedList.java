@@ -1,5 +1,7 @@
 package LinkedList;
 
+import java.util.List;
+
 public class SinglyLinkedList {
 
     private ListNode head;
@@ -253,7 +255,7 @@ public class SinglyLinkedList {
         return true;
     }
 
-    //method to find any node of loop
+    // method to find any node of loop
     private ListNode getLoopNode() {
         ListNode fastPtr = head;
         ListNode slowPtr = head;
@@ -269,7 +271,7 @@ public class SinglyLinkedList {
         return null;
     }
 
-    //method to check if the list contains loop
+    // method to check if the list contains loop
     boolean containsLoop() {
         if (getLoopNode() != null) {
             return true;
@@ -277,7 +279,7 @@ public class SinglyLinkedList {
         return false;
     }
 
-    //method to get the first node of loop
+    // method to get the first node of loop
     ListNode getFirstNodeOfLoop() {
         if (!containsLoop()) {
             return null;
@@ -292,7 +294,7 @@ public class SinglyLinkedList {
         return temp;
     }
 
-    //removing loop of list
+    // removing loop of list
     void removeLoop() {
         if (!containsLoop()) {
             return;
@@ -306,15 +308,45 @@ public class SinglyLinkedList {
         slowPtr.next = null;
     }
 
+    // Merging two sorted lists
+    public static ListNode mergeTwoSortedList(ListNode x, ListNode y) {
+        ListNode temp = new ListNode(0);
+        ListNode tail = temp;
+
+        while (x != null && y != null) {
+            if (x.data <= y.data) {
+                tail.next = x;
+                x = x.next;
+            } else {
+                tail.next = y;
+                y = y.next;
+            }
+            tail = tail.next;
+        }
+        if (x == null) {
+            tail.next = y;
+        } else {
+            tail.next = x;
+        }
+        return temp.next;
+    }
+
     public static void main(String[] args) {
         SinglyLinkedList sll = new SinglyLinkedList();
+        SinglyLinkedList sll2 = new SinglyLinkedList();
 
         // inserting nodes
         sll.insertAtEnd(41);
-        sll.insertAtEnd(41);
+        sll.insertAtEnd(42);
         sll.insertAtEnd(43);
         sll.insertAtEnd(44);
         sll.insertAtEnd(45);
+
+        sll.insertAtEnd(46);
+        sll.insertAtEnd(47);
+        sll.insertAtEnd(48);
+        sll.insertAtEnd(49);
+        sll.insertAtEnd(50);
 
         sll.getNthListNodeFromEnd(1).next = sll.getNthListNodeFromEnd(3);
 
@@ -332,8 +364,11 @@ public class SinglyLinkedList {
         // sll.removeDuplicates();
         // sll.insertNewNodeInSorted(45);
         // System.out.println(sll.deleteKey(46));
-        System.out.println(sll.containsLoop());
-        System.out.println(sll.getFirstNodeOfLoop());
+        // System.out.println(sll.containsLoop());
+        // System.out.println(sll.getFirstNodeOfLoop());
+
+        System.out.println(mergeTwoSortedList(sll.head, sll2.head));
+
         // sll.printLinkedList();
         // System.out.println(sll.getNthListNodeFromEnd(3));
 
