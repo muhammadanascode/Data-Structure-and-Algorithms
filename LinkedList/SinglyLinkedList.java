@@ -238,8 +238,8 @@ public class SinglyLinkedList {
         ListNode previous = null;
 
         if (current != null && current.data == value) {
-            head = head.next ;
-            return true ;
+            head = head.next;
+            return true;
         }
 
         while (current != null && current.data != value) {
@@ -253,6 +253,42 @@ public class SinglyLinkedList {
         return true;
     }
 
+    private ListNode getLoopNode() {
+        ListNode fastPtr = head;
+        ListNode slowPtr = head;
+
+        while (fastPtr != null && fastPtr.next != null) {
+            fastPtr = fastPtr.next.next;
+            slowPtr = slowPtr.next;
+
+            if (fastPtr == slowPtr) {
+                return slowPtr;
+            }
+        }
+        return null;
+    }
+
+    boolean containsLoop() {
+        if (getLoopNode() != null) {
+            return true;
+        }
+        return false;
+    }
+
+    ListNode getFirstNodeOfLoop() {
+        if (!containsLoop()) {
+            return null;
+        }
+        ListNode slowPtr = getLoopNode();
+        ListNode temp = head;
+
+        while (slowPtr != temp) {
+            slowPtr = slowPtr.next;
+            temp = temp.next;
+        }
+        return temp;
+    }
+
     public static void main(String[] args) {
         SinglyLinkedList sll = new SinglyLinkedList();
 
@@ -261,7 +297,9 @@ public class SinglyLinkedList {
         sll.insertAtEnd(41);
         sll.insertAtEnd(43);
         sll.insertAtEnd(44);
-        sll.insertAtEnd(46);
+        sll.insertAtEnd(45);
+
+        sll.getNthListNodeFromEnd(1).next = sll.getNthListNodeFromEnd(3);
 
         // displaying nodes
         // sll.printLinkedList();
@@ -276,8 +314,10 @@ public class SinglyLinkedList {
         // sll.reverse();
         // sll.removeDuplicates();
         // sll.insertNewNodeInSorted(45);
-       System.out.println(sll.deleteKey(46)); 
-        sll.printLinkedList();
+        // System.out.println(sll.deleteKey(46));
+        System.out.println(sll.containsLoop());
+        System.out.println(sll.getFirstNodeOfLoop());
+        // sll.printLinkedList();
         // System.out.println(sll.getNthListNodeFromEnd(3));
 
     }
