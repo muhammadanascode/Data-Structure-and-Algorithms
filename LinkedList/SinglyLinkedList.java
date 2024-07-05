@@ -253,6 +253,7 @@ public class SinglyLinkedList {
         return true;
     }
 
+    //method to find any node of loop
     private ListNode getLoopNode() {
         ListNode fastPtr = head;
         ListNode slowPtr = head;
@@ -268,6 +269,7 @@ public class SinglyLinkedList {
         return null;
     }
 
+    //method to check if the list contains loop
     boolean containsLoop() {
         if (getLoopNode() != null) {
             return true;
@@ -275,6 +277,7 @@ public class SinglyLinkedList {
         return false;
     }
 
+    //method to get the first node of loop
     ListNode getFirstNodeOfLoop() {
         if (!containsLoop()) {
             return null;
@@ -287,6 +290,20 @@ public class SinglyLinkedList {
             temp = temp.next;
         }
         return temp;
+    }
+
+    //removing loop of list
+    void removeLoop() {
+        if (!containsLoop()) {
+            return;
+        }
+        ListNode slowPtr = getFirstNodeOfLoop();
+        ListNode temp = head;
+        while (slowPtr.next != temp.next) {
+            slowPtr = slowPtr.next;
+            temp = temp.next;
+        }
+        slowPtr.next = null;
     }
 
     public static void main(String[] args) {
