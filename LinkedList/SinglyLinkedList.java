@@ -5,8 +5,8 @@ public class SinglyLinkedList {
     private ListNode head;
 
     static class ListNode {
-        private int data;
-        private ListNode next;
+        public int data;
+        public ListNode next;
 
         ListNode(int data) {
             this.data = data;
@@ -20,6 +20,10 @@ public class SinglyLinkedList {
                     ", next=" + (next != null ? next.data : "null") +
                     '}';
         }
+    }
+
+    ListNode getHead(){
+        return this.head ;
     }
 
     // printing the list
@@ -165,9 +169,6 @@ public class SinglyLinkedList {
             previous = current;
             current = next;
         }
-
-        // referencing head previous
-        head = previous;
 
         return;
     }
@@ -361,16 +362,16 @@ public class SinglyLinkedList {
 
     public static void main(String[] args) {
         SinglyLinkedList sll = new SinglyLinkedList();
-        SinglyLinkedList sll2 = new SinglyLinkedList();
+        // SinglyLinkedList sll2 = new SinglyLinkedList();
 
         // inserting nodes
         sll.insertAtEnd(1);
         sll.insertAtEnd(5);
         sll.insertAtEnd(5);
 
-        sll2.insertAtEnd(1);
-        sll2.insertAtEnd(5);
-        sll2.insertAtEnd(5);
+        // sll2.insertAtEnd(1);
+        // sll2.insertAtEnd(5);
+        // sll2.insertAtEnd(5);
 
         // sll.getNthListNodeFromEnd(1).next = sll.getNthListNodeFromEnd(3);
 
@@ -392,7 +393,9 @@ public class SinglyLinkedList {
         // System.out.println(sll.getFirstNodeOfLoop());
 
         // System.out.println(mergeTwoSortedList(sll.head, sll2.head));
-        System.out.println(add(sll.head, sll2.head).next.next);
+        // System.out.println(add(sll.head, sll2.head));
+        sll.reverse();
+        sll.printLinkedList();
 
         // sll.printLinkedList();
         // System.out.println(sll.getNthListNodeFromEnd(3));
