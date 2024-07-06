@@ -14,6 +14,13 @@ public class DoublyLinkedList {
             this.prev = null;
             this.next = null;
         }
+        @Override
+        public String toString() {
+            return "ListNode{" +
+                    "data=" + data +
+                    ", next=" + (next != null ? next.data : "null") +
+                    '}';
+        }
     }
 
     DoublyLinkedList() {
@@ -73,6 +80,23 @@ public class DoublyLinkedList {
         head  = newNode ;
     }
 
+    //method yo delete the first Node of list
+    ListNode deleteFirst(){
+        if (isEmpty()) {
+            return null ;
+        }
+        ListNode temp  = head ;
+        if (head == tail) {
+            tail = null ;
+        }
+        else{
+            head.next.prev = null ;
+        }
+        head = head.next ;
+        temp.next = null ;
+        return temp ;
+    }
+
     public static void main(String[] args) {
         DoublyLinkedList dll = new DoublyLinkedList() ;
         dll.insertAtEnd(1);
@@ -81,6 +105,10 @@ public class DoublyLinkedList {
         dll.insertAtEnd(4);
         dll.insertAtEnd(5);
 
+        
+        System.out.println(dll.deleteFirst());
+        System.out.println(dll.deleteFirst());
+        System.out.println(dll.deleteFirst());
         dll.printListForward(dll.head);
     }
 }
