@@ -2,8 +2,9 @@ package LinkedList;
 
 import LinkedList.SinglyLinkedList.ListNode;
 
+//Method to check whether the list is palindrome or not
+
 public class Solution {
-    
 
     public ListNode reverse(ListNode head) {
         ListNode current = head;
@@ -63,5 +64,47 @@ public class Solution {
         }
 
         return true;
+    }
+    // Problem: Separate the odd and even numbers in list and also maintain relative
+    // order for e.g [1,2,3,4]-->[1,3,2,4]
+
+    public ListNode oddEvenList(ListNode head) {
+        if (head == null) {
+            return null;
+        }
+
+        ListNode oddHead = new ListNode(0); // Dummy head for odd list
+        ListNode evenHead = new ListNode(0); // Dummy head for even list
+        ListNode odd = oddHead;
+        ListNode even = evenHead;
+        ListNode current = head;
+        int count = 0 ;
+
+        while (current != null) {
+            if (count % 2 != 0) { // Odd
+                odd.next = current;
+                odd = odd.next;
+            } else { // Even
+                even.next = current;
+                even = even.next;
+            }
+            current = current.next;
+            count++ ;
+        }
+
+        odd.next = null; // End of even list
+        even.next = oddHead.next; // Combine odd and even lists
+
+        return evenHead.next; // Head of the new list
+    }
+
+    public static void main(String[] args) {
+        Solution sol = new Solution() ;
+        SinglyLinkedList sll =new SinglyLinkedList() ;
+        sll.insertAtEnd(2);
+        sll.insertAtEnd(1);
+        sll.insertAtEnd(3);
+        sll.insertAtEnd(4);
+       System.out.println(sol.oddEvenList(sll.getHead()).next.next); 
     }
 }
