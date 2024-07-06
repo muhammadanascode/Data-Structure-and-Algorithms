@@ -30,6 +30,20 @@ public class DoublyLinkedList {
         return this.length;
     }
 
+    void insertAtEnd(int data) {
+        ListNode newNode = new ListNode(data);
+        if (isEmpty()) {
+            head = newNode ;
+        }
+        else{
+            tail.next = newNode ;
+        }
+        newNode.prev = tail;
+        tail = newNode ;
+        this.length++ ;
+
+    }
+
     public void printListForward(ListNode head) {
         ListNode temp = head;
         while (temp != null) {
