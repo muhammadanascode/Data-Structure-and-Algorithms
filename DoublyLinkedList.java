@@ -47,18 +47,40 @@ public class DoublyLinkedList {
     public void printListForward(ListNode head) {
         ListNode temp = head;
         while (temp != null) {
-            System.out.println(temp.data + "-->");
+            System.out.print(temp.data + " --> ");
             temp = temp.next;
         }
-        System.out.println("Ended");
+        System.out.println("null");
     }
 
     public void printListBackward(ListNode tail) {
         ListNode temp = tail;
         while (temp != null) {
-            System.out.println(temp.data + "-->");
+            System.out.print(temp.data + " --> ");
             temp = temp.prev;
         }
-        System.out.println("Ended");
+        System.out.println("null");
+    }
+
+    public void insertAtStart(int data){
+        ListNode newNode = new ListNode(data);
+        if (isEmpty()) {
+            tail = newNode ;
+        }else{
+            head.prev = newNode  ;
+        }
+        newNode.next = head ; 
+        head  = newNode ;
+    }
+
+    public static void main(String[] args) {
+        DoublyLinkedList dll = new DoublyLinkedList() ;
+        dll.insertAtEnd(1);
+        dll.insertAtEnd(2);
+        dll.insertAtEnd(3);
+        dll.insertAtEnd(4);
+        dll.insertAtEnd(5);
+
+        dll.printListForward(dll.head);
     }
 }
