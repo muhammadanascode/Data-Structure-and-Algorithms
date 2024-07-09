@@ -56,16 +56,18 @@ public class CircularSinglyLinkedList {
 
     //method to remove the first node from circular linked list
     public ListNode deleteNode(){
-        if (last == null || last.next == last) {
-            this.last = null ;
-            return this.last ;
+        if (last == null) {
+            return last ;
         }
-        ListNode firstNode = last.next ;
-        ListNode secondNode = firstNode.next ;
-        last.next = secondNode ;
-        firstNode.next = null ;
+        ListNode temp = last.next ;
+        if (last.next == last) {
+            last = null ;
+        }else{
+            last.next = temp.next ;
+        }
+        temp.next = null ;
         length-- ;
-        return firstNode ;
+        return temp ;
     }
 
     // method to print list
