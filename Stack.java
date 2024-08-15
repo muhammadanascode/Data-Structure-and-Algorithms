@@ -34,17 +34,17 @@ public class Stack {
         return;
     }
 
-    void pop(){
+    void pop() {
         if (isEmpty()) {
-            return ;
+            return;
         }
-        top = top.next ;
-        length-- ;
-        return ;
+        top = top.next;
+        length--;
+        return;
     }
 
-    int peek(){
-        return top.data ;
+    int peek() {
+        return top.data;
     }
 
     public static void main(String[] args) {
