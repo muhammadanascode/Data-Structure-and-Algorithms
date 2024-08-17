@@ -47,6 +47,10 @@ public class Queue {
         }
         int result = front.data;
         front = front.next;
+        if (front == null) {
+            rear = null ;
+        }
+        length-- ;
         return result;
     }
 
