@@ -33,6 +33,15 @@ public class BinaryTree {
         preOrder(root.right);
     }
 
+    public void postOrder(TreeNode root){
+        if (root == null) {
+            return ;
+        }
+        preOrder(root.left);
+        preOrder(root.right);
+        System.out.println(root.data);
+    }
+
     public static void main(String[] args) {
         BinaryTree tree = new BinaryTree() ;
     }
