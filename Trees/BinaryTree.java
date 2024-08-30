@@ -17,49 +17,49 @@ public class BinaryTree {
         }
     }
 
-    public void preOrder(TreeNode root){
+    public void preOrder(TreeNode root) {
         if (root == null) {
-            return ;
+            return;
         }
         System.out.println(root.data);
         preOrder(root.left);
         preOrder(root.right);
     }
 
-    //preorder using iterative approach
-    public void preOrderI(TreeNode root){
-        if (root  == null) {
-            return ;
+    // preorder using iterative approach
+    public void preOrderI(TreeNode root) {
+        if (root == null) {
+            return;
         }
 
-        Stack<TreeNode> stack = new Stack<>() ;
+        Stack<TreeNode> stack = new Stack<>();
         stack.push(root);
 
         while (!stack.isEmpty()) {
-            TreeNode temp = stack.pop() ;
+            TreeNode temp = stack.pop();
             System.out.println(temp.data);
             if (temp.right != null) {
-                stack.push(temp.right) ;
+                stack.push(temp.right);
             }
             if (temp.left != null) {
-                stack.push(temp.left) ;
+                stack.push(temp.left);
             }
         }
 
     }
 
-    public void inOrder(TreeNode root){
+    public void inOrder(TreeNode root) {
         if (root == null) {
-            return ;
+            return;
         }
         preOrder(root.left);
         System.out.println(root.data);
         preOrder(root.right);
     }
 
-    public void postOrder(TreeNode root){
+    public void postOrder(TreeNode root) {
         if (root == null) {
-            return ;
+            return;
         }
         preOrder(root.left);
         preOrder(root.right);
@@ -67,7 +67,7 @@ public class BinaryTree {
     }
 
     public static void main(String[] args) {
-        BinaryTree tree = new BinaryTree() ;
+        BinaryTree tree = new BinaryTree();
     }
 
 }
