@@ -57,6 +57,27 @@ public class BinaryTree {
         preOrder(root.right);
     }
 
+    public void inOrderI(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+
+        TreeNode temp = root;
+        Stack<TreeNode> stack = new Stack<>();
+
+        while (!stack.isEmpty() || temp != null) {
+            if (temp != null) {
+                stack.push(temp);
+                temp = temp.left;
+            } else {
+                temp = stack.pop();
+                System.out.println(temp.data);
+                temp = temp.right;
+            }
+        }
+
+    }
+
     public void postOrder(TreeNode root) {
         if (root == null) {
             return;
