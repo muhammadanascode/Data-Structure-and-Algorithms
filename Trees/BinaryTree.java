@@ -87,6 +87,32 @@ public class BinaryTree {
         System.out.println(root.data);
     }
 
+    // post order using Iterative approach
+    public void postOrderI(TreeNode root) {
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode temp = root;
+
+        while (!stack.isEmpty() || temp != null) {
+            if (temp != null) {
+                stack.push(temp);
+                temp = temp.left;
+            } else {
+                TreeNode t = stack.peek().right;
+                if (t == null) {
+                    t = stack.pop();
+                    System.out.println(t.data);
+                    while (!stack.isEmpty() && t == stack.peek().right) {
+                        t = stack.pop();
+                        System.out.println(t.data);
+                    }
+                } else {
+                    temp = t;
+                }
+            }
+        }
+
+    }
+
     public static void main(String[] args) {
         BinaryTree tree = new BinaryTree();
     }
