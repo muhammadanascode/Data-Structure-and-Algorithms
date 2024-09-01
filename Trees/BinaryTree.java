@@ -54,9 +54,9 @@ public class BinaryTree {
         if (root == null) {
             return;
         }
-        preOrder(root.left);
+        inOrder(root.left);
         System.out.println(root.data);
-        preOrder(root.right);
+        inOrder(root.right);
     }
 
     public void inOrderI(TreeNode root) {
@@ -151,27 +151,33 @@ public class BinaryTree {
         return result;
     }
 
-    public TreeNode insert(TreeNode root , int data){
+    public void insert(int value) {
+        this.root = insert(this.root, value);
+    }
+
+    public TreeNode insert(TreeNode root, int data) {
         if (root == null) {
-            root = new TreeNode(data) ;
-            return root ;
+            root = new TreeNode(data);
+            return root;
         }
 
-        if (data<=root.data) {
+        if (data <= root.data) {
             root.left = insert(root.left, data);
-        }else{
+        } else {
             root.right = insert(root.right, data);
         }
 
-        return root ;
+        return root;
     }
 
     public static void main(String[] args) {
         BinaryTree tree = new BinaryTree();
-        tree.insert(tree.root, 5);
-        tree.insert(tree.root, 4);
-        tree.insert(tree.root, 7);
-        tree.insert(tree.root, 2);
+        tree.insert(5);
+        tree.insert(4);
+        tree.insert(7);
+        tree.insert(2);
+
+        tree.inOrder(tree.root);
     }
 
 }
