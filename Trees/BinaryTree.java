@@ -151,8 +151,27 @@ public class BinaryTree {
         return result;
     }
 
+    public TreeNode insert(TreeNode root , int data){
+        if (root == null) {
+            root = new TreeNode(data) ;
+            return root ;
+        }
+
+        if (data<=root.data) {
+            root.left = insert(root.left, data);
+        }else{
+            root.right = insert(root.right, data);
+        }
+
+        return root ;
+    }
+
     public static void main(String[] args) {
         BinaryTree tree = new BinaryTree();
+        tree.insert(tree.root, 5);
+        tree.insert(tree.root, 4);
+        tree.insert(tree.root, 7);
+        tree.insert(tree.root, 2);
     }
 
 }
