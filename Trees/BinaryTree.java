@@ -170,14 +170,35 @@ public class BinaryTree {
         return root;
     }
 
+    // searching specific key
+    public boolean binarySearch(TreeNode root, int value, int i) {
+        if (root == null) {
+            System.out.println(i + " Iterations");
+            return false;
+        }
+        if (root.data == value) {
+            System.out.println(i + " Iterations");
+            return true;
+        } else if (value < root.data) {
+            return binarySearch(root.left, value, i + 1);
+        } else {
+            return binarySearch(root.right, value, i + 1);
+        }
+    }
+
     public static void main(String[] args) {
         BinaryTree tree = new BinaryTree();
+        tree.insert(5);
+        tree.insert(3);
+        tree.insert(9);
+        tree.insert(6);
         tree.insert(5);
         tree.insert(4);
         tree.insert(7);
         tree.insert(2);
 
-        tree.inOrder(tree.root);
+        // tree.inOrder(tree.root);
+        System.out.println(tree.binarySearch(tree.root, 4, 0));
     }
 
 }
