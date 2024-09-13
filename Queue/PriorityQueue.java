@@ -28,7 +28,6 @@ public class PriorityQueue {
         if (n == heap.length - 1) {
             resize(2 * heap.length);
         }
-        System.out.println(heap.length);
         heap[++n] = val;
         swim(n);
     }
@@ -43,14 +42,41 @@ public class PriorityQueue {
         }
     }
 
+    void deleteMax() {
+        heap[1] = heap[n];
+        heap[n--] = null;
+
+        sink();
+    }
+    private void sink() {
+        int k = 1;  // Start sinking from the root
+        while (2 * k <= n) {  // Check if the left child exists
+            int j = 2 * k;  // Left child
+            if (j < n && heap[j] < heap[j + 1]) {  // Compare with the right child, if it exists
+                j++;  // j now represents the larger child
+            }
+            if (heap[k] >= heap[j]) {  // If the parent is larger than the larger child, stop sinking
+                break;
+            }
+            // Swap the parent with the larger child
+            int temp = heap[k];
+            heap[k] = heap[j];
+            heap[j] = temp;
+            k = j;  // Move down to the next level
+        }
+    }
+  
+
     public static void main(String[] args) {
         PriorityQueue maxhp = new PriorityQueue(4);
         maxhp.insert(1);
         maxhp.insert(9);
         maxhp.insert(5);
         maxhp.insert(4);
-        maxhp.insert(3);
         maxhp.insert(11);
-    }
+        maxhp.insert(3);
+
+        maxhp.deleteMax();
+        }
 
 }
