@@ -18,11 +18,17 @@ public class PriorityQueue {
         return n;
     }
 
+    void resize(int l) {
+        Integer[] arr = new Integer[l];
+        System.arraycopy(heap, 1, arr, 1, n);
+        heap = arr;
+    }
+
     void insert(int val) {
         if (n == heap.length - 1) {
-            System.out.println("Heap out of memory");
-            return;
+            resize(2 * heap.length);
         }
+        System.out.println(heap.length);
         heap[++n] = val;
         swim(n);
     }
@@ -38,7 +44,13 @@ public class PriorityQueue {
     }
 
     public static void main(String[] args) {
-
+        PriorityQueue maxhp = new PriorityQueue(4);
+        maxhp.insert(1);
+        maxhp.insert(9);
+        maxhp.insert(5);
+        maxhp.insert(4);
+        maxhp.insert(3);
+        maxhp.insert(11);
     }
 
 }
