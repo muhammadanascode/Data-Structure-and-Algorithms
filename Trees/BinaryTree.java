@@ -186,19 +186,44 @@ public class BinaryTree {
         }
     }
 
+    // validating binary search tree
+    public void validate() {
+        boolean result = validate(this.root, Integer.MIN_VALUE, Integer.MAX_VALUE);
+        if (result) {
+            System.out.println("Binary Tree is valid");
+        } else {
+            System.out.println("Binary Tree isn't valid");
+        }
+    }
+
+    public boolean validate(TreeNode root, int min, int max) {
+        if (root == null) {
+            return true;
+        }
+        validate(root.left, min, root.data);
+        if (root.data < min) {
+            return false;
+        }
+        validate(root.right, root.data, max);
+        if (root.data > max) {
+            return false;
+        }
+        return true;
+    }
+
     public static void main(String[] args) {
         BinaryTree tree = new BinaryTree();
         tree.insert(5);
         tree.insert(3);
         tree.insert(9);
         tree.insert(6);
-        tree.insert(5);
         tree.insert(4);
         tree.insert(7);
         tree.insert(2);
 
         // tree.inOrder(tree.root);
-        System.out.println(tree.binarySearch(tree.root, 4, 0));
+        // System.out.println(tree.binarySearch(tree.root, 4, 0));
+        tree.validate();
     }
 
 }
