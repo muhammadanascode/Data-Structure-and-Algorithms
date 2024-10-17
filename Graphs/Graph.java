@@ -2,6 +2,7 @@ package Graphs;
 
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Stack;
 
 //Implementation of graphs using adjacency matrix
 
@@ -60,6 +61,24 @@ public class Graph {
                 if (!visited[v]) {
                     visited[v] = true;
                     q.offer(v);
+                }
+            }
+        }
+    }
+
+    public void dfs(int s){
+        boolean[] visited = new boolean[vertices];
+        Stack<Integer> stack = new Stack<>() ;
+        while (!stack.isEmpty()) {
+            int u = stack.pop() ;
+            if (!visited[u]) {
+                visited[u] = true ;
+                System.out.println(visited[u]);
+                for(v:adj[u]){
+                    if (!visited[v]) {
+                        visited = true ;
+                        stack.push(v) ;
+                    }
                 }
             }
         }
